@@ -3,7 +3,7 @@
     id="signup"
     class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
   >
-    <header class="header-mob">
+    <header class="header-mob mb-4">
       <%= link_to :unauthenticated_root do %>
         <i class="fa fa-arrow-left link-hover"></i>
       <% end %>
@@ -12,6 +12,8 @@
         <%= f.submit "Next", class:'font-ProximaLight link-hover' %>
       </div>
     </header>
+    <p class="text-green-500"><%= notice %></p>
+    <p class="text-red-500"><%= alert %></p>
     <div class="w-full flex flex-col ">
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
