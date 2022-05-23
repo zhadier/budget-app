@@ -1,0 +1,33 @@
+<section
+  id="group"
+  class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
+>
+  <header class="header-mob">
+    <i class="fa fa-bars link-hover"></i>
+    <h1 class='font-ProximaBold font-medium'>TRANSACTIONS</h1>
+    <i class="fa fa-search link-hover"></i>
+  </header>
+  <div
+    class="
+      flex
+      w-full
+      justify-between
+      items-center
+      p-4
+      border-b-2
+      bg-white
+      text-sm
+      mb-5
+    "
+  >
+    <h1 class="text-ProximaLight text-DesignGray">Gift credit</h1>
+    <p>$ 0</p>
+  </div>
+  <p class="text-green-500"><%= notice %></p>
+  <p class="text-red-500"><%= alert %></p>
+  <div id="groups" class="min-w-full flex flex-col space-y-4">
+    <%= render @groups %>
+  </div>
+  <%= link_to 'New Group', new_group_path, class:"fixed z-10 bottom-0 flex items-center justify-center bg-DesignBlue w-full h-12 text-white font-ProximaBold text-center button-hover" %>
+
+</section>
