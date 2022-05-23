@@ -65,6 +65,6 @@ a {
   }
 
   .header-mob {
-    @apply py-2 px-4 mb-4 w-full bg-DesignBlue flex text-white items-center justify-between;
+    @apply py-2 px-4 w-full bg-DesignBlue flex text-white items-center justify-between;
   }
 }
