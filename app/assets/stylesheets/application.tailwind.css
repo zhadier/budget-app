@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('/assets/FontsFree-Net-FontsFree-Net-Proxima-Nova-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Light';
+  src: url('/assets/FontsFree-Net-FontsFree-Net-Proxima-Nova-2.ttf');
+}
+
+button,
+a {
+  transition: background-color 0.25s ease-in, color 0.25s ease-in;
+}
+
+.font-ProximaBold {
+  font-family: 'Proxima Nova Bold', sans-serif;
+}
+
+.font-ProximaLight {
+  font-family: 'Proxima Nova Light', sans-serif;
+}
+
+.bg-DesignBlue {
+  background-color: #3778c2;
+}
+
+.bg-DesignGreen {
+  background-color: #60b523;
+}
+
+.bg-DesignWhite {
+  background-color: #f0f3f2;
+}
+
+.text-DesignGrayDark {
+  color: #434b54;
+}
+
+.text-DesignGray {
+  color: #878a8f;
+}
+
+.text-DesignGrayLight {
+  color: #979da2;
+}
+
+@layer components {
+  .button-hover {
+    @apply hover:bg-violet-600 active:bg-violet-700 cursor-pointer;
+    focus: outline-none;
+    focus: ring;
+    focus: ring-violet-300;
+  }
+
+  .link-hover {
+    @apply hover:text-violet-600 active:text-violet-700 cursor-pointer;
+    focus: outline-none;
+    focus: ring;
+    focus: ring-violet-300;
+  }
+
+  .header-mob {
+    @apply py-2 px-4 mb-4 w-full bg-DesignBlue flex text-white items-center justify-between;
+  }
+}
