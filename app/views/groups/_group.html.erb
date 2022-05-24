@@ -1,7 +1,7 @@
-<div id="<%= dom_id group %>", class="mx-4 my-2 p-5 rounded-md bg-white flex items-center justify-between">
+<div id="<%= dom_id group %>", class="mx-4 my-2 px-3 py-5 rounded-md bg-white flex items-center justify-between">
   <div class="flex space-x-3 items-center text-DesignGray">
   <% if group.icon.attached? %>
-   <div class="object-cover h-14 w-14">
+   <div class="object-cover h-16 w-16">
     <img src="<%= url_for(group.icon) %>", class="w-full h-full">
     </div>
   <% end %>
@@ -13,8 +13,12 @@
   </div>
 
 
-   <div class="flex-flex-col space-y-3 items-center">
+   <div class="flex flex-col space-y-3 items-center">
     <p class="text-center">$ <%= group.total_expenses %></p>
-    <%= button_to "Delete", group_path(group.id), class:"rounded-lg p-2 bg-gray-100 inline-block text-xs button-hover", method: :delete %>
+    <div class="flex space-x-2">         
+    <%= button_to "Show", group_expenses_path(group.id), class:"rounded-md p-1 bg-gray-200 inline-block text-xs button-hover", method: :get %>
+    <%= button_to "Delete", group_path(group.id), class:"rounded-md p-1 bg-gray-200 inline-block text-xs button-hover", method: :delete %>
+    </div>
+
   </div>
 </div>

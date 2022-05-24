@@ -1,9 +1,10 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: %i[ show edit update destroy ]
+  before_action :set_expense, only: %i[ destroy ]
   before_action :set_group
-  # GET /expenses or /expenses.json
+
+  # GET /expenses 
   def index
-    @expenses = Expense.all
+    @expenses = @group.expenses
   end
 
   # GET /expenses/new
@@ -11,11 +12,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
   end
 
-  # GET /expenses/1/edit
-  def edit
-  end
-
-  # POST /expenses or /expenses.json
+  # POST /expenses 
   def create
     params = expense_params
     @expense = Expense.new(name: params[:name], amount: params[:amount])
@@ -28,24 +25,9 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to expense_url(@expense), notice: 'Transaction was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
+        format.html { redirect_to group_expenses_url(@group.id), notice: 'Transaction was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /expenses/1 or /expenses/1.json
-  def update
-    respond_to do |format|
-      if @expense.update(expense_params)
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully updated." }
-        format.json { render :show, status: :ok, location: @expense }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +35,6 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1 or /expenses/1.json
   def destroy
     @expense.destroy
-
     respond_to do |format|
       format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
     end
