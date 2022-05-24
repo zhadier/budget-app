@@ -15,7 +15,6 @@
     <p class="text-green-500"><%= notice %></p>
     <p class="text-red-500"><%= alert %></p>
     <div class="w-full flex flex-col ">
-      <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.text_field :name, autofocus: true, autocomplete: "", placeholder: "Full Name", class:"placeholder:text-slate-400 w-full border-gray-100 " %>
       </div>

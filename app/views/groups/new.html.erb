@@ -1,37 +1,28 @@
-<div class="mx-auto my-10 md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New group</h1>
-
-  <%= form_with(model: @group, class: "contents") do |form| %>
-    <% if @group.errors.any? %>
-      <div
-        id="error_explanation"
-        class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
-      >
-        <h2><%= pluralize(@group.errors.count, "error") %>
-          prohibited this group from being saved:</h2>
-
-        <ul>
-          <% @group.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+<%= form_with(model: @group, class: "contents") do |form| %>
+  <section
+    id="new-group"
+    class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
+  >
+    <header class="header-mob mb-4">
+      <%= link_to groups_path do %>
+        <i class="fa fa-arrow-left w-9 link-hover"></i>
+      <% end %>
+      <h1 class='font-ProximaBold font-medium'>NEW CATEGORY</h1>
+      <div class="actions">
+        <%= form.submit "Create", class:'font-ProximaLight link-hover' %>
       </div>
-    <% end %>
+    </header>
+    <p class="text-green-500"><%= notice %></p>
+    <p class="text-red-500"><%= alert %></p>
+    <div class="w-full flex flex-col ">
+      <div class="field">
+        <%= form.text_field :name, autofocus: true, autocomplete: "", placeholder: "Name", class:"placeholder:text-slate-400 w-full border-gray-100 " %>
+      </div>
 
-    <div class="my-5">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <div class="field p-3 bg-white items-center space-x-3">
+        <%= form.label :icon, class:"text-slate-400" %>
+        <%= form.file_field :icon, accept:"image/png, image/gif, image/jpeg, image/svg, image/jpg", class: "flex items-center shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full text-ProximaLight" %>
+      </div>
     </div>
-
-    <div class="my-5">
-      <%= form.label :icon %>
-      <%= form.file_field :icon, accept:"image/png, image/gif, image/jpeg, image/svg, image/jpg", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-    </div>
-
-    <div class="inline">
-      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    </div>
-  <% end %>
-
-  <%= link_to 'Back to @roups', @groups_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+  </section>
+<% end %>
