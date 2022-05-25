@@ -22,6 +22,8 @@ gem 'devise'
 # Add Rspec
 # Run against this stable release
 group :development, :test do
+  gem 'faker'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0.rc1'
