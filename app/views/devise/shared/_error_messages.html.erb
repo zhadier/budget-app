@@ -1,0 +1,8 @@
+<% if resource.errors.any? %>
+    <ul class="flex flex-col items-center">
+      <% resource.errors.full_messages.each do |message| %>
+        <li class=" text-red-400"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
