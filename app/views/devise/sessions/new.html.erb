@@ -12,6 +12,7 @@
         <%= f.submit "Log in", class:'font-ProximaLight link-hover' %>
       </div>
     </header>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <p class="text-green-500"><%= notice %></p>
     <p class="text-red-500"><%= alert %></p>
     <div class="w-full flex flex-col ">

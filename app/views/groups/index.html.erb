@@ -2,11 +2,23 @@
   id="group"
   class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
 >
-  <header class="header-mob">
-    <i class="fa fa-bars link-hover"></i>
+  <header class="header-mob z-10">
+    <i class="fa fa-bars link-hover" id= "hamburger"></i>
     <h1 class='font-ProximaBold font-medium'>Categories</h1>
     <i class="fa fa-search link-hover"></i>
   </header>
+  <div class="hidden mobile-menu fixed top-0 left-0 right-0 bg-DesignWhite w-1/2 sm:w-80 p-5 py-12">
+    <ul class="space-y-4 flex flex-col items-center">
+      <li>    
+      <%= image_tag "budget.svg", width:"300", class:"mt-auto" %>
+
+      </li>
+      <li class="
+            text-sm
+           link-hover text-ProximaLight italic text-orange-400 cursor-default"><%= current_user.name%>
+      <li class="rounded-md p-1 bg-gray-200 inline-block text-xs transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"><%= link_to "Log out",'/users/sign_out'%></li>
+    </ul>
+  </div>
   <div
     class="
       flex
@@ -48,4 +60,5 @@
   >
     <%= link_to 'New Category', new_group_path, class:"text-xl flex items-center justify-center border-solid border-2 w-full h-full transition ease-in-out delay-150 hover:scale-y-110 duration-300" %>
   </div>
+ <%= javascript_include_tag 'navbar' %>
 </section>
