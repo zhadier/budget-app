@@ -58,12 +58,11 @@ a {
   }
 
   .link-hover {
-    @apply hover:text-violet-600 active:text-violet-700 cursor-pointer;
+    @apply active:text-violet-700 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300;
     focus: outline-none;
     focus: ring;
     focus: ring-violet-300;
   }
-
   .header-mob {
     @apply py-2 px-4 w-full bg-DesignBlue flex text-white items-center justify-between;
   }
