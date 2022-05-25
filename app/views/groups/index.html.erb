@@ -4,7 +4,7 @@
 >
   <header class="header-mob">
     <i class="fa fa-bars link-hover"></i>
-    <h1 class='font-ProximaBold font-medium'>TRANSACTIONS</h1>
+    <h1 class='font-ProximaBold font-medium'>Categories</h1>
     <i class="fa fa-search link-hover"></i>
   </header>
   <div
@@ -28,6 +28,24 @@
   <div id="groups" class="min-w-full flex flex-col">
     <%= render @groups %>
   </div>
-  <%= link_to 'New Group', new_group_path, class:"fixed z-10 bottom-0 flex items-center justify-center bg-DesignBlue w-full h-12 text-white font-ProximaBold text-center button-hover" %>
-
+  <div
+    class="
+      fixed
+      z-10
+      bottom-0
+      flex
+      items-center
+      justify-center
+      bg-DesignGreen
+      w-full
+      h-20
+      px-5
+      py-3
+      text-white
+      font-ProximaLight
+      text-center
+    "
+  >
+    <%= link_to 'New Category', new_group_path, class:"text-xl flex items-center justify-center border-solid border-2 w-full h-full transition ease-in-out delay-150 hover:scale-y-110 duration-300" %>
+  </div>
 </section>

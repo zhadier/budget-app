@@ -12,6 +12,12 @@
         <%= form.submit "Create", class:'font-ProximaLight link-hover' %>
       </div>
     </header>
+    <% if @group.errors.any? %>
+      <% @group.errors.full_messages.each do |message| %>
+        <h3 class="text-red-500"><%= message %>
+        </h3>
+      <% end %>
+    <% end %>
     <p class="text-green-500"><%= notice %></p>
     <p class="text-red-500"><%= alert %></p>
     <div class="w-full flex flex-col ">

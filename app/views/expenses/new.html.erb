@@ -1,7 +1,77 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New expense</h1>
+<%= form_with(model: @expense, url: group_expenses_path(@group.id), class: "contents") do |form| %>
+  <section
+    id="new-expense"
+    class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
+  >
+    <header class="header-mob mb-4">
+      <%= link_to group_expenses_path(@group.id) do %>
+        <i class="fa fa-arrow-left w-9 link-hover"></i>
+      <% end %>
+      <h1 class='font-ProximaBold font-medium'>New Expense</h1>
+      <div class="actions">
+        <%= form.submit "Create", class:'font-ProximaLight link-hover' %>
+      </div>
+    </header>
+    <% if @expense.errors.any? %>
+      <% @expense.errors.full_messages.each do |message| %>
+        <h3 class="text-red-500"><%= message %>
+        </h3>
+      <% end %>
+    <% end %>
+    <p class="text-green-500"><%= notice %></p>
+    <p class="text-red-500"><%= alert %></p>
+    <div class="w-full flex flex-col border-2 border-gray-100">
 
-  <%= render "form", expense: @expense %>
+      <div
+        class="
+          p-3
+          w-full
+          flex
+          justify-center
+          bg-white
+          border-2
+          border-gray-100
+          items-center
+          space-x-8
+        "
+      >
+        <%= form.text_field :name, autofocus: true, autocomplete: "", placeholder: "Name", class:"placeholder:text-slate-500 border-gray-300 " %>
+      </div>
 
-  <%= link_to 'Back to expenses', expenses_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+      <div
+        class="
+          p-3
+          w-full
+          flex
+          justify-center
+          border-2
+          border-gray-100
+          bg-white
+          items-center
+          space-x-8
+        "
+      >
+        <%= form.number_field :amount, placeholder:"Amount", class: "border-slate-300" %>
+      </div>
+
+      <div
+        class="
+          p-3
+          pb-7
+          w-full
+          flex
+          justify-center
+          border-2
+          border-gray-100
+          bg-white
+          items-center
+        "
+      >
+
+        <%= form.select :selected_groups, current_user.groups.collect { |group| [group.name, group.id] }, { 
+      disabled: "",:prompt => "Please Select your Categories"}, 
+                                           { :multiple => true, :size => 5, :class=>"m-0 text-center flex flex-col space-y-3 border-gray-300"} %>
+      </div>
+    </div>
+  </section>
+<% end %>
