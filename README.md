@@ -16,6 +16,14 @@
 
 ## Getting Started
 
+## Live Demo
+
+[Heroku](https://budget-app-zhadier.herokuapp.com/)
+
+## Video Demo
+
+[Loom](https://www.loom.com/share/4140ea0d2a9b4573a8555e5c754df359)
+
 ### To launch the project locally:
 
 #### Step 1:

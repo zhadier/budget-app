@@ -7,7 +7,7 @@ document.addEventListener('turbo:load', function () {
   });
   document.addEventListener('mouseup', function (evt) {
     targetElement = evt.target; // clicked element
-    if (targetElement != menu) {
+    if (targetElement != menu && targetElement != btn) {
       menu.classList.add('hidden');
     }
   });
