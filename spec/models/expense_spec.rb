@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  let(:user) {create(:user)}
+  let(:user) { create(:user) }
   subject { create(:expense, author_id: user.id) }
   before { subject.save }
 
@@ -34,14 +34,16 @@ RSpec.describe Expense, type: :model do
   end
 
   context 'total_expenses' do
-    let(:group) {create(:group, total_expenses:5)}
+    let(:group) { create(:group, total_expenses: 5) }
     it 'Increases total expense for group when created' do
-      group.expenses.create(name:"zee", amount: 1, author_id: user.id, groups:[group])
+      group.expenses.create(name: 'zee', amount: 1, author_id: user.id, groups: [group])
       expect(group.total_expenses).to eq(1 + 5)
     end
 
     it 'Decreases total expense for group when destroyed' do
-      
+      group.expenses.create(name: 'zee', amount: 1, author_id: user.id, groups: [group])
+      group.expenses[0].destroy
+      expect(group.total_expenses).to eq(5)
     end
   end
 end

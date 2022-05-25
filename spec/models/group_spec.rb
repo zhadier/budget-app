@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:user) {create(:user)}
+  let(:user) { create(:user) }
   subject { create(:group, user_id: user.id) }
   before { subject.save }
 
@@ -35,7 +35,7 @@ RSpec.describe Group, type: :model do
   end
 
   it 'Has many expenses' do
-    create_list :expense, 5, groups:[subject]
+    create_list :expense, 5, groups: [subject]
     expect(subject.expenses.length).to eql(5)
   end
 

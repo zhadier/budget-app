@@ -1,8 +1,8 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: %i[ destroy ]
+  before_action :set_expense, only: %i[destroy]
   before_action :set_group
 
-  # GET /expenses 
+  # GET /expenses
   def index
     @expenses = @group.expenses
   end
@@ -12,14 +12,14 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
   end
 
-  # POST /expenses 
+  # POST /expenses
   def create
     parameters = params.require(:expense).permit(:name, :amount, selected_groups: [])
     @expense = current_user.expenses.new(name: parameters[:name], amount: parameters[:amount])
     selected_groups = parameters[:selected_groups]
     groups = Group.where(id: selected_groups)
     groups.each do |group|
-      @expense.groups.push(group) 
+      @expense.groups.push(group)
     end
 
     respond_to do |format|
@@ -35,17 +35,18 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to group_expenses_url(@group), notice: "Expense was successfully destroyed." }
+      format.html { redirect_to group_expenses_url(@group), notice: 'Expense was successfully destroyed.' }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
 
-    def set_group
-      @group = Group.find(params[:group_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_expense
+    @expense = Expense.find(params[:id])
+  end
+
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
 end

@@ -5,16 +5,23 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+        "ignoreAtRules": ["tailwind", "apply", "focus", "layer", "variants", "responsive", "screen"]
       }
     ],
     "scss/at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+        "ignoreAtRules": ["tailwind", "layer", "focus", "apply", "variants", "responsive", "screen"]
       }
     ],
     "csstree/validator": true
   },
-  "ignoreFiles": ["build/**", "dist/**", "**/reset*.css", "**/bootstrap*.css", "vendor/**/*"]
+  "ignoreFiles": [
+    "build/**",
+    "**/tailwind*.css",
+    "dist/**",
+    "**/reset*.css",
+    "**/bootstrap*.css",
+    "vendor/**/*"
+  ]
 }

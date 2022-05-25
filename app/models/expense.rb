@@ -12,11 +12,10 @@ class Expense < ApplicationRecord
   private
 
   def add_total_expense
-    groups.each{|category| category.update(total_expenses: (category.total_expenses+self.amount))}
+    groups.each { |category| category.update(total_expenses: (category.total_expenses + amount)) }
   end
 
   def subtract_total_expense
-    groups.each{|category| category.update(total_expenses: (category.total_expenses-self.amount))}
+    groups.each { |category| category.update(total_expenses: (category.total_expenses - amount)) }
   end
-
 end
