@@ -14,18 +14,17 @@ class ExpensesController < ApplicationController
 
   # POST /expenses 
   def create
-    params = expense_params
-    @expense = Expense.new(name: params[:name], amount: params[:amount])
-    @expense.user_id = current_user.id
-    @categories_ids = params[:categories_ids]
-    @categories_ids.each do |id|
-      category = Category.find(id) unless id == ''
-      @expense.categories.push(category) unless category.nil?
+    parameters = params.require(:expense).permit(:name, :amount, selected_groups: [])
+    @expense = current_user.expenses.new(name: parameters[:name], amount: parameters[:amount])
+    selected_groups = parameters[:selected_groups]
+    groups = Group.where(id: selected_groups)
+    groups.each do |group|
+      @expense.groups.push(group) 
     end
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to group_expenses_url(@group.id), notice: 'Transaction was successfully created.' }
+        format.html { redirect_to group_expenses_url(groups[0].id), notice: 'Expense was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +35,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
+      format.html { redirect_to group_expenses_url(@group), notice: "Expense was successfully destroyed." }
     end
   end
 
@@ -48,10 +47,5 @@ class ExpensesController < ApplicationController
 
     def set_group
       @group = Group.find(params[:group_id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def expense_params
-      params.require(:expense).permit(:name, :amount, category_ids: [])
     end
 end
