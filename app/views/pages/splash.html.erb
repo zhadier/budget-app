@@ -1,0 +1,18 @@
+<section
+  id="splash"
+  class="
+    w-full
+    min-h-screen
+    justify-center
+    items-center
+    flex
+    flex-col
+    bg-DesignWhite
+  "
+>
+  <%= image_tag "budget.svg", width:"400", class:"mt-auto" %>
+  <div class="mt-auto flex flex-col items-center w-full space-y-5 mb-8">
+    <%= link_to "LOG IN", new_user_session_path, class:"flex items-center justify-center bg-DesignBlue w-4/5 h-12 text-white font-ProximaLight text-center sm:max-w-sm button-hover" %>
+    <%= link_to "SIGN UP", new_user_registration_path, class:"link-hover" %>
+  </div>
+</section>

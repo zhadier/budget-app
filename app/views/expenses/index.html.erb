@@ -1,0 +1,55 @@
+<section
+  id="expense"
+  class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
+>
+  <header class="header-mob">
+      <%= link_to :authenticated_root do %>
+        <i class="fa fa-arrow-left link-hover"></i>
+      <% end %>
+    <h1 class='font-ProximaBold font-medium'><%=@group.name.capitalize%></h1>
+    <i class="fa fa-search link-hover"></i>
+  </header>
+   <div
+    class="
+      flex
+      w-full
+      justify-between
+      items-center
+      p-4
+      border-b-2
+      bg-white
+      text-sm
+      mb-5
+    "
+  >
+    <h1 class="text-ProximaLight text-DesignGray">Total Expenses</h1>
+    <p>$ <%=@group.total_expenses%></p>
+  </div>
+  <p class="text-green-500"><%= notice %></p>
+  <p class="text-red-500"><%= alert %></p>
+
+    <div id="expenses" class="min-w-full flex flex-col">
+      <%= render @expenses %>
+    </div>
+  </div>
+   <div
+    class="
+      fixed
+      z-10
+      bottom-0
+      flex
+      items-center
+      justify-center
+      bg-DesignGreen
+      w-full
+      h-20
+      px-5
+      py-3
+      text-white
+      font-ProximaLight
+      text-center
+    "
+  >
+   <%= link_to 'New Expense', new_group_expense_path(group_id:@group.id), class:"text-xl flex items-center justify-center border-solid border-2 w-full h-full transition ease-in-out delay-150 hover:scale-y-110 duration-300" %>
+   </div>
+</section>

@@ -1,0 +1,37 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {"data-turbo": "false"}) do |f| %>
+  <section
+    id="login"
+    class="w-full min-h-screen bg-DesignWhite items-center flex flex-col"
+  >
+    <header class="header-mob mb-4">
+      <%= link_to :unauthenticated_root do %>
+        <i class="fa fa-arrow-left w-9 link-hover"></i>
+      <% end %>
+      <h1 class='font-ProximaLight font-medium'>LOGIN</h1>
+      <div class="actions">
+        <%= f.submit "Log in", class:'font-ProximaLight link-hover' %>
+      </div>
+    </header>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <p class="text-green-500"><%= notice %></p>
+    <p class="text-red-500"><%= alert %></p>
+    <div class="w-full flex flex-col ">
+      <div class="field">
+        <%= f.email_field :email, autofocus: true ,placeholder: "Email", class:"placeholder:text-slate-400 w-full border-gray-100 ", autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password , placeholder: "Password", class:"placeholder:text-slate-400 w-full border-gray-100 ", autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field mt-4">
+          <%= f.check_box :remember_me, class:"mx-2 cursor-pointer" %>
+          <%= f.label :remember_me, class: "text-gray-500" %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class:"text-gray-500 link-hover mt-7" %><br/>
+  </section>
+<% end %>

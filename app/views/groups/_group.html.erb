@@ -1,0 +1,24 @@
+<div id="<%= dom_id group %>", class="mx-4 my-2 px-3 py-5 rounded-md bg-white flex items-center justify-between">
+  <div class="flex space-x-3 items-center text-DesignGray">
+  <% if group.icon.attached? %>
+   <div class="object-cover h-20 w-16">
+    <img src="<%= url_for(group.icon) %>", class="w-full h-full">
+    </div>
+  <% end %>
+  <div class="flex flex-col space-y-2 h-full">
+   <p><%= group.name %></p>
+    <p class="text-xs"><%= group.created_at.strftime('%d %B %Y') %></p>
+   </div>
+   
+  </div>
+
+
+   <div class="flex flex-col space-y-3 items-center">
+    <p class="text-center">$ <%= group.total_expenses %></p>
+    <div class="flex space-x-2">         
+    <%= button_to "Show", group_expenses_path(group.id), class:"rounded-md p-1 bg-gray-200 inline-block text-xs transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300", method: :get %>
+    <%= button_to "Delete", group_path(group.id), class:"rounded-md p-1 bg-gray-200 inline-block text-xs transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300", method: :delete %>
+    </div>
+
+  </div>
+</div>
